@@ -23,4 +23,12 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    #[Route('/prayer', name: 'prayer')]
+    public function prayer(): Response
+    {
+        return $this->render('home/prayer.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
