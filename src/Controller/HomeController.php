@@ -31,4 +31,29 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    #[Route('/activities', name: 'activities')]
+    public function activities(): Response
+    {
+        return $this->render('home/activities.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    #[Route('/mosquee', name: 'mosquee')]
+    public function mosquee(): Response
+    {
+        return $this->render('home/mosquee.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    #[Route('/actualities', name: 'actualities')]
+    public function actualities(): Response
+    {
+        return $this->render('home/actualities.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
 }
