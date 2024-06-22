@@ -56,4 +56,12 @@ class HomeController extends AbstractController
         ]);
     }
 
+    #[Route('/donation', name: 'donation')]
+    public function donation(): Response
+    {
+        return $this->render('home/donation.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
 }
