@@ -2786,7 +2786,7 @@ html {
   
   .hero {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("./—Pngtree—bismillah\ arabic\ calligraphy\ png\ and_7965768.png"),
+    background-image: url("{{ asset('images/—Pngtree—bismillah\ arabic\ calligraphy\ png\ and_7965768.png') }}"),
       linear-gradient(
         to right,
         var(--bordeaux_hover),
@@ -2808,8 +2808,7 @@ html {
     background-color: var(--bordeaux);
     filter: none;
     -webkit-text-fill-color: inherit;
-    background-image: url("./—Pngtree—bismillah\ arabic\ calligraphy\ png\ and_7965768.png"),
-      url("https://assets-global.website-files.com/641dab129205bc6655ff0661/643bf88947b29d6b99eeea32_pattern_hero.svg");
+    background-image: url("{{ asset('images/—Pngtree—bismillah\ arabic\ calligraphy\ png\ and_7965768.png') }}");
     background-position: 83% 42%, 50%;
     background-repeat: no-repeat, repeat;
     background-size: 710px, 15%;

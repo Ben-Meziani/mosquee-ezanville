@@ -43,8 +43,17 @@ class HomeController extends AbstractController
     #[Route('/mosquee', name: 'mosquee')]
     public function mosquee(): Response
     {
+        $arrayHistory = [
+            "1987" => "Création de l'Association socio-culturelle de la communauté islamique des Yvelines, qui permet aux musulmans de se retrouver pour pratiquer leur culte dans un mise à disposition par un fidèle au 11 rue Philippe de Dangeau à Ezanville",
+            "1997" => "Modification de l'appellation de l'association pour devenir l'Association des Musulmans de Ezanville.fr (AMV).",
+            "1999" => "Achat d'un terrain de 1 000 m² au 11 rue Philippe de Dangeau à Ezanville pour la construction d'une mosquée.",
+            "2011" => "Adoption des statuts d'association cultuelle pour l'AMV, en vue d'une transformation de l'association suivi du projet de rénovation et de restructuration des lieux.",
+            "2013" => "Début des travaux de rénovation et de restructuration de la mosquée.",
+            "2014" => "Inauguration de la mosquée le 14 juin 2014.",
+            "2015" => "Création de l'Association des Musulmans de Ezanville (AMV) pour la gestion de la mosquée de Ezanville.",
+        ];
         return $this->render('home/mosquee.html.twig', [
-            'controller_name' => 'HomeController',
+            'history' => $arrayHistory,
         ]);
     }
 
@@ -68,6 +77,13 @@ class HomeController extends AbstractController
     public function informations(): Response
     {
         return $this->render('home/informations.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+    #[Route('/don-campaign', name: 'don-campaign')]
+    public function don(): Response
+    {
+        return $this->render('home/don-campaign.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
