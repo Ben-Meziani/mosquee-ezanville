@@ -51,6 +51,15 @@ class HomeController extends AbstractController
             "2013" => "Début des travaux de rénovation et de restructuration de la mosquée.",
             "2014" => "Inauguration de la mosquée le 14 juin 2014.",
             "2015" => "Création de l'Association des Musulmans de Ezanville (AMV) pour la gestion de la mosquée de Ezanville.",
+            "2016" => "Création de l'Association des Musulmans de Domont (AMD) pour la gestion de la mosquée de Domont.",
+            "2017" => "Création de l'Association des Musulmans de Bouffémont (AMB) pour la gestion de la mosquée de Bouffémont.",
+            "2018" => "Création de l'Association des Musulmans de Montmagny (AMM) pour la gestion de la mosquée de Montmagny.",
+            "2019" => "Création de l'Association des Musulmans de Montmorency (AMM) pour la gestion de la mosquée de Montmorency.",
+            "2020" => "Création de l'Association des Musulmans de Saint-Brice-sous-Forêt (AMSBF) pour la gestion de la mosquée de Saint-Brice-sous-Forêt.",
+            "2021" => "Création de l'Association des Musulmans de Saint-Prix (AMSP) pour la gestion de la mosquée de Saint-Prix.",
+            "2022" => "Création de l'Association des Musulmans de Saint-Leu-la-Forêt (AMSLF) pour la gestion de la mosquée de Saint-Leu-la-Forêt.",
+            "2023" => "Création de l'Association des Musulmans de Montlignon (AMM) pour la gestion de la mosquée de Montlignon."
+            
         ];
         return $this->render('home/mosquee.html.twig', [
             'history' => $arrayHistory,
