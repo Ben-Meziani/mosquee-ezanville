@@ -15,21 +15,30 @@ class HistoricRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Historic::class);
     }
+    public function findAllHistoric(): array
+    {
+        return $this->createQueryBuilder('h')
+            ->orderBy('h.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
 
-    //    /**
-    //     * @return Historic[] Returns an array of Historic objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('h')
-    //            ->andWhere('h.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('h.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+       /**
+        * @return Historic[] Returns an array of Historic objects
+        */
+       public function findByExampleField($value): array
+       {
+           return $this->createQueryBuilder('h')
+               ->andWhere('h.exampleField = :val')
+               ->setParameter('val', $value)
+               ->orderBy('h.id', 'ASC')
+               ->setMaxResults(10)
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 
     //    public function findOneBySomeField($value): ?Historic
     //    {
