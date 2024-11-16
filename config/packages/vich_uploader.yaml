@@ -1,0 +1,8 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        images_mosquee:
+            uri_prefix: /images/mosquee
+            upload_destination: '%kernel.project_dir%/public/images/mosquee'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

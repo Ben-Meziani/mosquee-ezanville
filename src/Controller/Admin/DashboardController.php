@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Historic;
+use App\Entity\MosqueeImage;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -30,6 +31,8 @@ class DashboardController extends AbstractDashboardController
     {
        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
        yield MenuItem::linkToCrud('Historique', 'fas fa-book', Historic::class);
+       yield MenuItem::linkToCrud('Images', 'fas fa-book', MosqueeImage::class);
+       
     
     }
 }
