@@ -20,7 +20,7 @@ class MosqueeImageType extends AbstractType
                 'allow_delete' => true,
                 'download_uri' => false,
             ])
-            ->add('name', TextType::class)
+            // ->add('name', TextType::class)
         ;
     }
 

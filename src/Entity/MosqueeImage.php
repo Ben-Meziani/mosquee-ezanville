@@ -33,7 +33,7 @@ class MosqueeImage
         return $this->id;
     }
 
-    public function setFile(File $file): static
+    public function setFile(?File $file = null): static
     {
         $this->file = $file;
 
@@ -54,7 +54,7 @@ class MosqueeImage
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string|null $name): static
     {
         $this->name = $name;
 
@@ -66,7 +66,7 @@ class MosqueeImage
         return $this->size;
     }
 
-    public function setSize(int $size): static
+    public function setSize(int|null $size): static
     {
         $this->size = $size;
 

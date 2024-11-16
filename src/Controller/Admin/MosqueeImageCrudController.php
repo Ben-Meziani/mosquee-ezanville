@@ -20,11 +20,11 @@ class MosqueeImageCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new("name");
-        yield ImageField::new('file')
-            ->setBasePath('/uploads/images')
-            ->setUploadDir('public/uploads/images')
-            ->setUploadedFileNamePattern('[randomhash].[extension]')
-            ->setRequired(false);
+        // yield ImageField::new('file')
+        //     ->setBasePath('/uploads/images')
+        //     ->setUploadDir('public/uploads/images')
+        //     ->setUploadedFileNamePattern('[randomhash].[extension]')
+        //     ->setRequired(false);
         yield TextField::new('file')
             ->setFormType(VichImageType::class)
             ->setFormTypeOption('allow_delete', true)
