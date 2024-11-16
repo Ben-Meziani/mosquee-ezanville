@@ -16,7 +16,7 @@ class MosqueeImage
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Vich\UploadableField(mapping: 'mosquee_images', fileNameProperty: 'name', size: 'size')]
+    #[Vich\UploadableField(mapping: 'images_mosquee', fileNameProperty: 'name', size: 'size')]
     private ?File $file = null;
 
     #[ORM\Column(length: 255)]
@@ -35,7 +35,6 @@ class MosqueeImage
 
     public function setFile(File $file): static
     {
-        dd($file);
         $this->file = $file;
 
         if (null !== $file) {
