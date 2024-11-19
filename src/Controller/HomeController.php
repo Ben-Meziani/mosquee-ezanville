@@ -50,9 +50,9 @@ class HomeController extends AbstractController
     {
         $arrayHistory = $em->getRepository(Historic::class)->findAllHistoric();
         $images = $em->getRepository(MosqueeImage::class)->findAll();
-        $images = array_chunk($images, ceil(count($images) / 2));
-        $firstPartImages = $images[0];
-        $secondPartImages = $images[1];
+        $images = count($images) > 0 ? array_chunk($images, ceil(count($images) / 2)) : [];
+        $firstPartImages = !empty($images[0]) ? $images[0] : [];
+        $secondPartImages = !empty($images[1]) ? $images[1] : [];
         return $this->render('home/mosquee.html.twig', [
             'history' => $arrayHistory,
             'firstPartImages' => $firstPartImages,
