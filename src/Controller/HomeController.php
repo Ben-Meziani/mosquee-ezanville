@@ -91,4 +91,10 @@ class HomeController extends AbstractController
         ]);
     }
 
+    #[Route('/mentions-legales', name: 'mentions-legales')]
+    public function mentions(): Response
+    {
+        return $this->render('home/mentions-legales.html.twig');
+    }
+
 }
