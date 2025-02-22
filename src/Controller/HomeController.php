@@ -97,7 +97,8 @@ class HomeController extends AbstractController
                     $mail->Subject = $data['objet'];
                     $mail->isHTML(true);
                     $mail->Body = $templateEmail;
-
+                    //Encodage
+                    $mail->CharSet = 'UTF-8';
                     // Envoi du mail
                     $mail->send();
                     echo "✅ Email envoyé avec succès !";
