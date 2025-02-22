@@ -44,7 +44,6 @@
 <body class="body home">
         {% include 'base.html.twig' %}
     </div>
-
     <div class="section_title">
         <div class="container-3 w-container">
             <div class="div-block-2">
@@ -98,37 +97,64 @@
                                             </a>
                                         </div>
                                     </div>
+                                    {% for type, messages in app.flashes %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-{{ type }}">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
                                     <div class="rl_contact6_form-block w-form">
-                                        <form id="wf-form-Formulaire-de-contact" name="wf-form-Formulaire-de-contact" data-name="Formulaire de contact" method="get" class="rl_contact6_form" data-wf-page-id="64398b34b5efde4eadae0da9" data-wf-element-id="59ffbf29-e0d1-1cc6-20a2-38bcb5e76475">
-                                            <div class="rl_contact6_form-field-2col">
-                                                <div class="rl_contact6_form-field-wrapper"><label for="Nom-2" class="rl-field-label">Nom</label><input class="rl-form-input w-input" maxlength="256" name="Nom" data-name="Nom :" placeholder="" type="text" id="Nom-2" required="" /></div>
-                                                <div class="rl_contact6_form-field-wrapper"><label for="Pr-nom" class="rl-field-label">Prénom</label><input class="rl-form-input w-input" maxlength="256" name="Pr-nom" data-name="Prénom :" placeholder="" type="text" id="Pr-nom" required="" /></div>
+                                        {{ form_start(form, {'attr': {
+                                            'id': 'contact-form',
+                                            'class': 'rl_contact6_form',
+                                            'action': path('contact'),
+                                            'method': 'POST',
+                                            'novalidate': 'novalidate',
+                                            'data-wf-ignore': 'true'
+                                        }}) }}
+                                        <div class="rl_contact6_form-field-2col">
+                                            <div class="rl_contact6_form-field-wrapper">
+                                                {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'rl-field-label'}}) }}
+                                                {{ form_widget(form.nom, {'attr': {'class': 'rl-form-input w-input'}}) }}
                                             </div>
-                                            <div class="rl_contact6_form-field-2col">
-                                                <div class="rl_contact6_form-field-wrapper"><label for="Contact-6-Email-3" class="rl-field-label">Email</label><input class="rl-form-input w-input" maxlength="256" name="Contact-6-Email" data-name="Contact 6 Email" placeholder="" type="email" id="Contact-6-Email-3" required="" /></div>
-                                                <div class="rl_contact6_form-field-wrapper"><label for="T-l-phone" class="rl-field-label">Numéro de téléphone</label><input class="rl-form-input w-input" maxlength="256" name="T-l-phone" data-name="Téléphone" placeholder="(facultatif)" type="tel" id="T-l-phone" /></div>
+                                            <div class="rl_contact6_form-field-wrapper">
+                                                {{ form_label(form.prenom, 'Prénom', {'label_attr': {'class': 'rl-field-label'}}) }}
+                                                {{ form_widget(form.prenom, {'attr': {'class': 'rl-form-input w-input'}}) }}
                                             </div>
-                                            <div class="rl_contact6_form-field-wrapper"><label for="Objet" class="rl-field-label">Sélectionnez l&#x27;objet de votre message</label><select id="Objet" name="Objet" data-name="Objet :" required="" class="rl-form-select-input w-select">
-                                                    <option value="">Sélection...</option>
-                                                    <option value="Question d&#x27;ordre général">Question d&#x27;ordre général</option>
-{#                                                    <option value="Cérémonie de mariage religieux">Cérémonie de mariage religieux</option>#}
-{#                                                    <option value="Salat al Janaza">Salat al Janaza</option>#}
-                                                    <option value="Devenir bénévole">Devenir bénévole</option>
-                                                    <option value="Autre">Autre</option>
-                                                </select></div>
-                                            <div class="rl_contact6_form-field-wrapper"><label for="Message" class="rl-field-label">Message</label><textarea id="Message" name="Message" maxlength="5000" data-name="Message :" placeholder="Entrez votre message..." required="" class="rl-form-text-area w-input"></textarea></div>
-                                            {# <div id="w-node-_011958a6-b814-d507-1dc6-f208bd2ec085-adae0da9" data-sitekey="6LfkkZIlAAAAAA53sxTiA9-2f2NdgV3TF0I-ejs4" class="w-form-formrecaptcha g-recaptcha g-recaptcha-error g-recaptcha-disabled"></div> #}
-                                            <div id="w-node-_59ffbf29-e0d1-1cc6-20a2-38bcb5e764b5-adae0da9" class="rl_contact6_button-wrapper">
-                                                <div class="rl_contact6_spacing-block-7"></div><input type="submit" data-wait="Veuillez patienter..." id="w-node-_59ffbf29-e0d1-1cc6-20a2-38bcb5e764b7-adae0da9" class="rl-button-2 f-banner-button w-button" value="Envoyer" />
-                                            </div>
-                                        </form>
-                                        <div class="rl-success-message-2 w-form-done">
-                                            <div class="rl-success-text">Merci ! Votre message a été envoyé avec succès !</div>
                                         </div>
-                                        <div class="rl-error-message-2 w-form-fail">
-                                            <div class="rl-error-text">Une erreur est survenue... Veuillez nous envoyer un email à contact@mosquee-ezanville.fr si le problème persiste.</div>
+                                        <div class="rl_contact6_form-field-2col">
+                                            <div class="rl_contact6_form-field-wrapper">
+                                                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'rl-field-label'}}) }}
+                                                {{ form_widget(form.email, {'attr': {'class': 'rl-form-input w-input'}}) }}
+                                            </div>
+                                            <div class="rl_contact6_form-field-wrapper">
+                                                {{ form_label(form.telephone, 'Numéro de téléphone', {'label_attr': {'class': 'rl-field-label'}}) }}
+                                                {{ form_widget(form.telephone, {'attr': {'class': 'rl-form-input w-input', 'placeholder': '(facultatif)'}}) }}
+                                            </div>
                                         </div>
+                                        <div class="rl_contact6_form-field-wrapper">
+                                            {{ form_label(form.objet, 'Sélectionnez l\'objet de votre message', {'label_attr': {'class': 'rl-field-label'}}) }}
+                                            {{ form_widget(form.objet, {'attr': {'class': 'rl-form-select-input w-select'}}) }}
+                                        </div>
+                                        <div class="rl_contact6_form-field-wrapper">
+                                            {{ form_label(form.message, 'Message', {'label_attr': {'class': 'rl-field-label'}}) }}
+                                            {{ form_widget(form.message, {'attr': {'class': 'rl-form-text-area w-input', 'placeholder': 'Entrez votre message...'}}) }}
+                                        </div>
+{#                                        <div class="rl_contact6_button-wrapper">#}
+{#                                            <div class="rl_contact6_spacing-block-7"></div>#}
+{#                                            <input type="submit" class="rl-button-2 f-banner-button w-button" value="Envoyer" />#}
+{#                                        </div>#}
+                                        {{ form_end(form) }}
+
+{#                                        <div class="rl-success-message-2 w-form-done">#}
+{#                                            <div class="rl-success-text">Merci ! Votre message a été envoyé avec succès !</div>#}
+{#                                        </div>#}
+{#                                        <div class="rl-error-message-2 w-form-fail">#}
+{#                                            <div class="rl-error-text">Une erreur est survenue... Veuillez nous envoyer un email à contact@mosquee-ezanville.fr si le problème persiste.</div>#}
+{#                                        </div>#}
                                     </div>
+
                                 </div>
                             </div>
                         </div>

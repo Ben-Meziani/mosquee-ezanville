@@ -4,12 +4,20 @@ namespace App\Controller;
 
 use App\Entity\Historic;
 use App\Entity\MosqueeImage;
+use App\Form\ContactType;
 use App\Repository\HistoricRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
+use Twig\Environment;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class HomeController extends AbstractController
 {
@@ -22,10 +30,90 @@ class HomeController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function contact(): Response
+    public function contact(Request $request, MailerInterface $mailer, Environment $twig)
     {
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+//            try{
+//                $data = $form->getData();
+//
+//                // Vérification de l'existence du fichier template
+//                $templateEmail = $twig->render('emails/emails.html.twig', [
+//                    'nom' => $data['nom'],
+//                    'prenom' => $data['prenom'],
+//                    'telephone' => $data['telephone'],
+//                    'message' => $data['message'],
+//                ]);
+//
+//                // Création de l'email
+//                $email = (new Email())
+//                    ->from($data['email'])
+//                    ->to('contact@mosquee-ezanville.fr')
+//                    ->subject($data['objet'])
+//                    ->html($templateEmail);
+//                $mailer->send($email);
+//
+//                // Message de confirmation
+//                $this->addFlash('success', 'Merci ! Votre message a été envoyé avec succès.');
+
+                $mail = new PHPMailer(true);
+
+                try {
+                    $data = $form->getData();
+
+                    // Vérification de l'existence du fichier template
+                    $templateEmail = $twig->render('emails/emails.html.twig', [
+                        'nom' => $data['nom'],
+                        'prenom' => $data['prenom'],
+                        'telephone' => $data['telephone'],
+                        'message' => $data['message'],
+                    ]);
+
+                    // Configuration SMTP
+                    $mail->isSMTP();
+                    $mail->Host = $_ENV['MAILTRAP_HOST']; // Serveur Mailtrap
+                    $mail->SMTPAuth = true;
+                    $mail->Username = $_ENV['MAILTRAP_USERNAME']; // Username
+                    $mail->Password = $_ENV['MAILTRAP_PASSWORD']; // Password
+                    switch($_ENV['MAILTRAP_PORT']){
+                        case 587:
+                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                            break;
+                        case 465:
+                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                            break;
+                        default:
+                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    }
+                    $mail->Port = $_ENV['MAILTRAP_PORT'];
+
+                    // Expéditeur et destinataire
+                    $mail->setFrom('test@example.com', 'Test Mailtrap');
+                    $mail->addAddress('contact@mosquee-ezanville.fr');
+
+                    // Contenu du mail
+                    $mail->Subject = $data['objet'];
+                    $mail->isHTML(true);
+                    $mail->Body = $templateEmail;
+
+                    // Envoi du mail
+                    $mail->send();
+                    echo "✅ Email envoyé avec succès !";
+                } catch (Exception $e) {
+                    echo "❌ Erreur : " . $mail->ErrorInfo;
+                }
+//            return $this->redirectToRoute('contact');
+//            } catch (\Exception $e) {
+//                $this->addFlash('error', 'Une erreur est survenue lors de l\'envoi de votre message.');
+//            }
+
+        }
+
         return $this->render('home/contact.html.twig', [
             'controller_name' => 'HomeController',
+            'form' => $form->createView()
         ]);
     }
 

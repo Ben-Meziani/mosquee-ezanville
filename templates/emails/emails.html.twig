@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <p>Bonjour {{ prenom }} {{ nom }},</p>
+
+    <p>{{ message }}</p>
+
+    <p>Merci de nous avoir contactés. Si vous avez d'autres questions, n'hésitez pas à répondre à cet email.</p>
+
+    <div class="footer">
+        <p>Cet email est généré automatiquement, veuillez ne pas y répondre directement.</p>
+    </div>
+</div>
+</body>
+</html>
