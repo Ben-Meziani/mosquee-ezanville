@@ -101,14 +101,10 @@ class HomeController extends AbstractController
                     $mail->CharSet = 'UTF-8';
                     // Envoi du mail
                     $mail->send();
-                    echo "✅ Email envoyé avec succès !";
+                    $this->addFlash('success', 'Merci ! Votre message a été envoyé avec succès.');
                 } catch (Exception $e) {
-                    echo "❌ Erreur : " . $mail->ErrorInfo;
+                    $this->addFlash("error", "Une erreur est survenue lors de l'envoi du mail: ".$e->getMessage());
                 }
-//            return $this->redirectToRoute('contact');
-//            } catch (\Exception $e) {
-//                $this->addFlash('error', 'Une erreur est survenue lors de l\'envoi de votre message.');
-//            }
 
         }
 
