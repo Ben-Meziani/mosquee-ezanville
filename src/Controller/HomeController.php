@@ -36,27 +36,6 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            try{
-//                $data = $form->getData();
-//
-//                // Vérification de l'existence du fichier template
-//                $templateEmail = $twig->render('emails/emails.html.twig', [
-//                    'nom' => $data['nom'],
-//                    'prenom' => $data['prenom'],
-//                    'telephone' => $data['telephone'],
-//                    'message' => $data['message'],
-//                ]);
-//
-//                // Création de l'email
-//                $email = (new Email())
-//                    ->from($data['email'])
-//                    ->to('contact@mosquee-ezanville.fr')
-//                    ->subject($data['objet'])
-//                    ->html($templateEmail);
-//                $mailer->send($email);
-//
-//                // Message de confirmation
-//                $this->addFlash('success', 'Merci ! Votre message a été envoyé avec succès.');
 
                 $mail = new PHPMailer(true);
 
