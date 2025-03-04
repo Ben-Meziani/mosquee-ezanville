@@ -1014,6 +1014,10 @@ html {
   }
   
   @media screen and (max-width: 479px) {
+    .columns-2 {
+      display: flex;
+      flex-direction: column;
+    }
     .w-container {
       max-width: none;
     }
