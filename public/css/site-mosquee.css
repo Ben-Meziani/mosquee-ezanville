@@ -5919,7 +5919,6 @@ html {
     text-align: justify;
     letter-spacing: 0;
     max-width: none;
-    margin-top: 40px;
     line-height: 140%;
   }
   
@@ -6017,7 +6016,6 @@ html {
   }
   
   .f-heading-detail-small-2.activites {
-    color: #8c1741;
     text-align: left;
     letter-spacing: 0;
     text-transform: none;

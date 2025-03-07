@@ -94,7 +94,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/prayer', name: 'prayer')]
+    #[Route('/priere', name: 'prayer')]
     public function prayer(): Response
     {
         return $this->render('home/prayer.html.twig', [
@@ -102,7 +102,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/activities', name: 'activities')]
+    #[Route('/activites', name: 'activities')]
     public function activities(): Response
     {
         return $this->render('home/activities.html.twig', [
@@ -110,7 +110,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/mosquee', name: 'mosquee')]
+    #[Route('/association', name: 'mosquee')]
     public function mosquee(EntityManagerInterface $em): Response
     {
         $arrayHistory = $em->getRepository(Historic::class)->findAllHistoric();
