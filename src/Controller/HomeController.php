@@ -21,13 +21,13 @@ use PHPMailer\PHPMailer\Exception;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home')]
-    public function index(): Response
-    {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+    // #[Route('/', name: 'home')]
+    // public function index(): Response
+    // {
+    //     return $this->render('home/index.html.twig', [
+    //         'controller_name' => 'HomeController',
+    //     ]);
+    // }
 
     #[Route('/contact', name: 'contact')]
     public function contact(Request $request, MailerInterface $mailer, Environment $twig)
@@ -125,7 +125,16 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/actualities', name: 'actualities')]
+    // #[Route('/actualities', name: 'actualities')]
+    // public function actualities(): Response
+    // {
+    //     return $this->render('home/actualities.html.twig', [
+    //         'controller_name' => 'HomeController',
+    //     ]);
+    // }
+
+    
+    #[Route('/', name: 'home')]
     public function actualities(): Response
     {
         return $this->render('home/actualities.html.twig', [
