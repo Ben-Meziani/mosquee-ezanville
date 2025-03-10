@@ -9,6 +9,7 @@ use App\Repository\HistoricRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -35,7 +36,7 @@ class HomeController extends AbstractController
 
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
 
                 $mail = new PHPMailer(true);
@@ -71,7 +72,7 @@ class HomeController extends AbstractController
 
                     // Expéditeur et destinataire
                     $mail->setFrom('test@example.com', 'Test Mailtrap');
-                    $mail->addAddress('contact@mosquee-ezanville.fr');
+                    $mail->addAddress('accezanville@gmail.com');
 
                     // Contenu du mail
                     $mail->Subject = $data['objet'];
@@ -81,9 +82,9 @@ class HomeController extends AbstractController
                     $mail->CharSet = 'UTF-8';
                     // Envoi du mail
                     $mail->send();
-                    $this->addFlash('success', 'Merci ! Votre message a été envoyé avec succès.');
+                    return new JsonResponse(['success' => 'Votre message a bien été envoyé']);
                 } catch (Exception $e) {
-                    $this->addFlash("error", "Une erreur est survenue lors de l'envoi du mail: ".$e->getMessage());
+                    return new JsonResponse(['error' => 'Une erreur est survenue lors de l\'envoi du message']);
                 }
 
         }

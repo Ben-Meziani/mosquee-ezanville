@@ -545,7 +545,7 @@ html {
   
   .w-form-done {
     text-align: center;
-    background-color: #ddd;
+    background-color: #b2e77d;
     padding: 20px;
     display: none;
   }
@@ -5082,7 +5082,7 @@ html {
   }
   
   .rl-success-text {
-    color: var(--relume-library-lite-rl-black);
+    color: green;
     font-family: Montserrat, sans-serif;
     font-weight: 600;
   }
@@ -7835,7 +7835,7 @@ html {
   
     .image-9 {
       flex: 0 auto;
-      width: 210px;
+      min-width: 150px;
       padding: 10px;
     }
   
