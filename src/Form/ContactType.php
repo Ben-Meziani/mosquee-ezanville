@@ -36,7 +36,7 @@ class ContactType extends AbstractType
             ])
             ->add('telephone', TelType::class, [
                 'label' => 'Numéro de téléphone',
-                'required' => true,
+                'required' => false,
                 'attr' => ['class' => 'rl-form-input w-input', 'placeholder' => '(facultatif)']
             ])
             ->add('objet', ChoiceType::class, [

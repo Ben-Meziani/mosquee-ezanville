@@ -17,11 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
+            successMessage.style.display = 'block';
+            buttonSubmit.disabled = false;
             setTimeout(() => {
                 form.reset();
-                successMessage.style.display = 'block';
-            }, 5000);
-            buttonSubmit.disabled = false;
+                successMessage.style.display = 'none';
+            }, 3000);
         })
         .catch(error => {
             errorMessage.style.display = 'block';
