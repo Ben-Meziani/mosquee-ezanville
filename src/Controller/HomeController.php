@@ -83,10 +83,10 @@ class HomeController extends AbstractController
                     $mail->CharSet = 'UTF-8';
                     // Envoi du mail
                     $mail->send();
-                    return new JsonResponse(['success' => 'Votre message a bien été envoyé']);
+                    return new JsonResponse(['success' => 'Votre message a bien été envoyé'], 200);
                 } catch (Exception $e) {
                     $logger->error('Erreur lors de l\'envoi du message : ' . $e->getMessage());
-                    return new JsonResponse(['error' => $e->getMessage()]);
+                    return new JsonResponse(['error' => $e->getMessage()], 500);
                 }
 
         }
