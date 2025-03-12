@@ -18,12 +18,21 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            successMessage.style.display = 'block';
-            buttonSubmit.disabled = false;
-            setTimeout(() => {
-                form.reset();
-                successMessage.style.display = 'none';
-            }, 3000);
+            if(data.success) {
+                successMessage.style.display = 'block';
+                buttonSubmit.disabled = false;
+                setTimeout(() => {
+                    form.reset();
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }else{
+                errorMessage.style.display = 'block';
+                buttonSubmit.disabled = false;
+                setTimeout(() => {
+                    form.reset();
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
         })
         .catch(error => {
             errorMessage.style.display = 'block';
