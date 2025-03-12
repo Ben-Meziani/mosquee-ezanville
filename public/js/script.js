@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             successMessage.style.display = 'block';
             buttonSubmit.disabled = false;
             setTimeout(() => {
