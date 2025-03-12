@@ -8,6 +8,7 @@ use App\Form\ContactType;
 use App\Repository\HistoricRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +32,7 @@ class HomeController extends AbstractController
     // }
 
     #[Route('/contact', name: 'contact')]
-    public function contact(Request $request, MailerInterface $mailer, Environment $twig)
+    public function contact(Request $request, MailerInterface $mailer, Environment $twig, LoggerInterface $logger): Response
     {
 
         $form = $this->createForm(ContactType::class);
@@ -84,6 +85,7 @@ class HomeController extends AbstractController
                     $mail->send();
                     return new JsonResponse(['success' => 'Votre message a bien été envoyé']);
                 } catch (Exception $e) {
+                    $logger->error('Erreur lors de l\'envoi du message : ' . $mail->ErrorInfo);
                     return new JsonResponse(['error' => 'Une erreur est survenue lors de l\'envoi du message']);
                 }
 
