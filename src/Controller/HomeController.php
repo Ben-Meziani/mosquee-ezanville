@@ -72,8 +72,8 @@ class HomeController extends AbstractController
                     $mail->Port = $_ENV['MAIL_PORT'];
 
                     // Expéditeur et destinataire
-                    $mail->setFrom('test@example.com', 'Test Mailtrap');
-                    $mail->addAddress('accezanville@gmail.com');
+                    $mail->setFrom($data['email'], $_ENV['MAIL_FROM_NAME']);
+                    $mail->addAddress($_ENV['MAIL_TO_ADDRESS']);
 
                     // Contenu du mail
                     $mail->Subject = $data['objet'];
