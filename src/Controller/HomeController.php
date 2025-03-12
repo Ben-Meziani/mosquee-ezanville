@@ -85,8 +85,8 @@ class HomeController extends AbstractController
                     $mail->send();
                     return new JsonResponse(['success' => 'Votre message a bien été envoyé']);
                 } catch (Exception $e) {
-                    $logger->error('Erreur lors de l\'envoi du message : ' . $mail->ErrorInfo);
-                    return new JsonResponse(['error' => 'Une erreur est survenue lors de l\'envoi du message']);
+                    $logger->error('Erreur lors de l\'envoi du message : ' . $e->getMessage());
+                    return new JsonResponse(['error' => $e->getMessage()]);
                 }
 
         }
