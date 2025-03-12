@@ -55,11 +55,11 @@ class HomeController extends AbstractController
 
                     // Configuration SMTP
                     $mail->isSMTP();
-                    $mail->Host = $_ENV['MAILTRAP_HOST']; // Serveur Mailtrap
+                    $mail->Host = $_ENV['MAIL_HOST']; // Serveur Mailtrap
                     $mail->SMTPAuth = true;
-                    $mail->Username = $_ENV['MAILTRAP_USERNAME']; // Username
-                    $mail->Password = $_ENV['MAILTRAP_PASSWORD']; // Password
-                    switch($_ENV['MAILTRAP_PORT']){
+                    $mail->Username = $_ENV['MAIL_USERNAME']; // Username
+                    $mail->Password = $_ENV['MAIL_PASSWORD']; // Password
+                    switch($_ENV['MAIL_PORT']){
                         case 587:
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                             break;
@@ -69,7 +69,7 @@ class HomeController extends AbstractController
                         default:
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     }
-                    $mail->Port = $_ENV['MAILTRAP_PORT'];
+                    $mail->Port = $_ENV['MAIL_PORT'];
 
                     // Expéditeur et destinataire
                     $mail->setFrom('test@example.com', 'Test Mailtrap');
