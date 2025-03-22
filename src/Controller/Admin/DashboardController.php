@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Actuality;
 use App\Entity\Historic;
 use App\Entity\MosqueeImage;
 use App\Entity\User;
@@ -32,6 +33,7 @@ class DashboardController extends AbstractDashboardController
        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
        yield MenuItem::linkToCrud('Historique', 'fas fa-book', Historic::class);
        yield MenuItem::linkToCrud('Images', 'fas fa-book', MosqueeImage::class);
+       yield MenuItem::linkToCrud('Actualités', 'fas fa-book', Actuality::class);
        
     
     }
