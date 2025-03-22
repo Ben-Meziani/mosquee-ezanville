@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Actuality;
 use App\Entity\Historic;
 use App\Entity\MosqueeImage;
 use App\Form\ContactType;
@@ -127,21 +128,13 @@ class HomeController extends AbstractController
             'secondPartImages' => $secondPartImages
         ]);
     }
-
-    // #[Route('/actualities', name: 'actualities')]
-    // public function actualities(): Response
-    // {
-    //     return $this->render('home/actualities.html.twig', [
-    //         'controller_name' => 'HomeController',
-    //     ]);
-    // }
-
     
     #[Route('/', name: 'home')]
-    public function actualities(): Response
+    public function actualities(EntityManagerInterface $em): Response
     {
+        $actualities = $em->getRepository(Actuality::class)->findAll();
         return $this->render('home/actualities.html.twig', [
-            'controller_name' => 'HomeController',
+            'actualities' => $actualities
         ]);
     }
 

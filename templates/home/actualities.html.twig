@@ -57,17 +57,11 @@
                         <div class="rl_blog5_list-wrapper page_actus w-dyn-list">
                             <div role="list" class="rl_blog5_list page_actus_list w-dyn-items w-row">
                                 <div role="listitem" class="rl_blog5_item paceactus_itm w-dyn-item w-col w-col-6">
-                                        <div class="rl_blog5_spacing-block-12"></div>
-                                    <h3>Restez informé des dernières nouvelles de l'ACCE. Cette page met en avant : </h3>
-                                    <p><span style="font-weight: bold; font-size: 1.8em;">•</span> Nos événements récents et à venir.</p>
-                                    <p><span style="font-weight: bold; font-size: 1.8em;">•</span> Les campagnes de solidarité en cours, notamment les collectes pour les maraudes ou d’autres initiatives caritatives.</p>
-                                    <p><span style="font-weight: bold; font-size: 1.8em;">•</span> Les mises à jour importantes concernant nos activités et services.</p>
-
-                                    <h3>Dernières actualités : </h3>
-                                    <p><span style="font-weight: bold; font-size: 1.8em;">•</span> Changement de nom: Association Culturelle et Cultuelle d’Ézanville à Association Cultuelle de la Commune d’Ézanville</p>
-                                    <p><span style="font-weight: bold; font-size: 1.8em;">•</span> Changement de logo</p>
-                                    <p><span style="font-weight: bold; font-size: 1.8em;">•</span> Nouveau compte Hello Asso pour les dons unitaire ou mensuelle
-                                    </p>
+                                    <div class="rl_blog5_spacing-block-12"></div>
+                                    {% for actuality in actualities %}
+                                    <h3>{{ actuality.title }}</h3>
+                                    {{ actuality.text | raw }}
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div role="navigation" aria-label="List" class="w-pagination-wrapper"></div>
