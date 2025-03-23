@@ -8,3 +8,5 @@ fos_ck_editor:
     configs:
         config_full:
             toolbar: full
+            filebrowserUploadUrl: '/admin/upload-image'
+            filebrowserUploadMethod: 'form'

@@ -3,10 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -15,14 +17,22 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Utlisateur')
+            ->setEntityLabelInPlural('Utlisateurs')
+            ->setSearchFields(['email', 'username', 'lastname'])
+            ->setDefaultSort(['id' => 'DESC']);
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('email', 'Email'),
+            TextField::new('username', 'Username')->setLabel('Prénom'),
+            TextField::new('lastname', 'Last Name')->setLabel('Nom'),
+            BooleanField::new('isVerified', 'Is Verified')->setLabel('Email confirmé'),
         ];
     }
-    */
 }

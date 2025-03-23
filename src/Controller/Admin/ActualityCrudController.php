@@ -34,11 +34,11 @@ class ActualityCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextareaField::new('text')
+            TextField::new('title')->setLabel('Titre'),
+            TextareaField::new('text')->setLabel('Texte')
                 ->setFormType(CKEditorType::class)
                 ->setFormTypeOptions([
-                    'config_name' => 'config_full', // ou autre config CKEditor si tu en as défini
+                    'config_name' => 'config_full',
                 ])
                 ->hideOnIndex(),
         ];

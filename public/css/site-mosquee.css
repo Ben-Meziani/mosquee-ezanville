@@ -9138,5 +9138,8 @@ html {
     #w-node-_629ef56b-f773-35e6-1986-737e156427c4-561420fc {
       order: 9999;
     }
+    .cke_notifications_area{
+      display: none!important;
+    }
   }
   

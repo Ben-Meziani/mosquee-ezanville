@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -27,6 +28,13 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('Mosquee');
     }
+
+    public function configureAssets(): Assets
+{
+    return Assets::new()
+        ->addCssFile('css/admin.css')
+        ->addJsFile('js/admin.js');
+}
 
     public function configureMenuItems(): iterable
     {

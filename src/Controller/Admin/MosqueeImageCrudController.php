@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class MosqueeImageCrudController extends AbstractCrudController
 {
@@ -17,17 +18,20 @@ class MosqueeImageCrudController extends AbstractCrudController
         return MosqueeImage::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Image')
+            ->setEntityLabelInPlural('Images')
+            ->setPageTitle('index', 'Liste des %entity_label_plural%')
+            ->setPaginatorPageSize(20);
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('name');
-        yield ImageField::new('name')
-                ->setBasePath('/uploads/images/mosquee')
-                ->setUploadDir('public/uploads/images')
-                ->setUploadedFileNamePattern('[randomhash].[extension]')
-                ->setRequired(false);
         yield TextField::new('file')
             ->setFormType(VichImageType::class)
             ->setFormTypeOption('allow_delete', true)
-            ->setFormTypeOption('download_uri', false);
+            ->setFormTypeOption('download_uri', false)->setLabel('Image');
             }
 }

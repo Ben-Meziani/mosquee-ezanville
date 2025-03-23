@@ -39,3 +39,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    // Quand CKEditor est prêt, supprime l'avertissement
+    if (window.CKEDITOR) {
+        CKEDITOR.on('instanceReady', function () {
+            const warning = document.querySelector('.cke_notification_warning');
+            if (warning) {
+                warning.remove();
+            }
+        });
+    }
+});
