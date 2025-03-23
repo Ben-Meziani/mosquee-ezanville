@@ -28,8 +28,7 @@ class HistoricCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title')->setLabel('Titre'),
+            TextField::new('date')->setLabel('Date'),
             TextEditorField::new('text')->setLabel('Texte'),
         ];
     }
