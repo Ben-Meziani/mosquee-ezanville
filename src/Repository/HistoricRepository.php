@@ -18,7 +18,7 @@ class HistoricRepository extends ServiceEntityRepository
     public function findAllHistoric(): array
     {
         return $this->createQueryBuilder('h')
-            ->orderBy('h.date', 'ASC')
+            ->orderBy('h.date', 'DESC')
             ->getQuery()
             ->getResult()
         ;
