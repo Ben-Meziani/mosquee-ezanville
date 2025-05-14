@@ -52,18 +52,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Détection mobile
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    // Détection Chrome mobile
-    var isChrome = /Chrome/i.test(navigator.userAgent) && /Mobile/i.test(navigator.userAgent);
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Détection mobile
+//     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+//     // Détection Chrome mobile
+//     var isChrome = /Chrome/i.test(navigator.userAgent) && /Mobile/i.test(navigator.userAgent);
 
-    if (isMobile && isChrome) {
-        var iframe = document.getElementById('haWidget-mobile');
-        var link = document.getElementById('helloasso-link');
-        if (iframe && link) {
-            iframe.style.display = 'none';
-            link.style.display = 'block';
-        }
-    }
-});
+//     if (isMobile && isChrome) {
+//         var iframe = document.getElementById('haWidget-mobile');
+//         var link = document.getElementById('helloasso-link');
+//         if (iframe && link) {
+//             iframe.style.display = 'none';
+//             link.style.display = 'block';
+//         }
+//     }
+// });
