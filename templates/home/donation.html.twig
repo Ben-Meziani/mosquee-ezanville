@@ -43,48 +43,69 @@
 </head>
 
 <body class="body home">
-    {% include 'base.html.twig' %}
-    <div class="section_title">
-        <div class="container-3 w-container">
-            <div class="div-block-2">
-                <h2 class="rl-heading-style-h2 page_h2">La Mosquée a besoin de vous.</h2>
-            </div>
-        </div>
+  {% include 'base.html.twig' %}
+  <div class="section_title">
+    <div class="container-3 w-container">
+      <div class="div-block-2">
+        <h2 class="rl-heading-style-h2 page_h2">La Mosquée a besoin de vous.</h2>
+      </div>
     </div>
-    <div class="section padsecdons">
-        <div data-w-id="20f445d4-5663-faf4-06b6-dd3cf29ae259" style="opacity:0" class="container-2 w-container">
-            <div class="div-block helloasso">
-                <p class="paragraph-5 quote">Vos dons soutiennent nos actions et renforcent notre communauté, il s’agit d’un simple geste mais qui fait une grande différence.</p>
-                <p class="paragraph-5 quote">Parce que faire un don, c’est investir dans des initiatives durables et grâce à votre soutien, nous pouvons étendre d'avantage nos services</p>
-                <p class="paragraph-5 quote">Son financement est assuré exclusivement par vos dons. Chaque contribution, grande ou petite, est importante.</p>
-                <p class="paragraph-5 intro_dons ar">قُلْ إِنَّ رَبِّى يَبْسُطُ ٱلرِّزْقَ لِمَن يَشَآءُ مِنْ عِبَادِهِۦ وَيَقْدِرُ لَهُۥ وَمَآ أَنفَقْتُم مِّن شَىْءٍ فَهُوَ يُخْلِفُهُۥ وَهُوَ خَيْرُ ٱلرَّٰزِقِينَ</p>
-                <p class="paragraph-5 intro_dons fr">Dis: «Mon Seigneur dispense avec largesse ou restreint Ses dons à qui Il veut parmi ses serviteurs. Et toute dépense que vous faites [dans le bien], Il la remplace, et c&#x27;est Lui le Meilleur des donateurs».<br />Sourate Saba, verset 39</p>
-                <p class="paragraph-5 intro_dons fr">Le dispositif fiscal lié aux dons vise à encourager la solidarité et à soutenir les actions des associations qui répondent aux besoins sociaux, culturels ou humanitaires.</p>
-                <div data-w-id="e448c7a5-465a-c041-f361-5fb4fefd67a2" class="html-embed-3 helloasso tablet w-embed w-iframe"><iframe id="haWidget-tablet" allowtransparency="true" scrolling="no" src="https://www.helloasso.com/associations/association-cultuelle-de-la-commune-d-ezanville/formulaires/2/widget" style="width: 100%; height: 120VH; border: none;" class="tablet"></iframe>
-                    <style>
-                        #haWidget-tablet {
-                            min-height: 250VH;
-                        }
-                    </style>
-                </div>
-                <div class="html-embed-3 helloasso desktop w-embed w-iframe"><iframe id="haWidget" allowtransparency="true" scrolling="no" src="https://www.helloasso.com/associations/association-cultuelle-de-la-commune-d-ezanville/formulaires/2/widget" style="width: 100%; height: 120VH; border: none;"></iframe>
-                    <style>
-                        #haWidget {
-                            min-height: 1240px;
-                        }
-                    </style>
-                </div>
-                <div class="html-embed-3 helloasso mobile w-embed w-iframe"><iframe id="haWidget-mobile" allowtransparency="true" scrolling="no" src="https://www.helloasso.com/associations/association-cultuelle-de-la-commune-d-ezanville/formulaires/2/widget" style="width: 100%; height: 120VH; border: none;" class="mobile"></iframe>
-                    <style>
-                        #haWidget-mobile {
-                            min-height: 360VH;
-                        }
-                    </style>
-                </div>
-            </div>
-        </div>
+  </div>
+
+  <div class="section padsecdons">
+    <div data-w-id="20f445d4-5663-faf4-06b6-dd3cf29ae259" style="opacity:0"  class="container-2 w-container">
+      <div class="div-block helloasso">
+        <p class="paragraph-5 quote">Vos dons soutiennent nos actions et renforcent notre communauté...</p>
+        <p class="paragraph-5 quote">Parce que faire un don, c’est investir dans des initiatives durables...</p>
+        <p class="paragraph-5 quote">Son financement est assuré exclusivement par vos dons...</p>
+        <p class="paragraph-5 intro_dons ar">
+          قُلْ إِنَّ رَبِّى يَبْسُطُ ٱلرِّزْقَ ...
+        </p>
+        <p class="paragraph-5 intro_dons fr">
+          Dis: «Mon Seigneur dispense avec largesse... »<br />
+          Sourate Saba, verset 39
+        </p>
+        <p class="paragraph-5 intro_dons fr">
+          Le dispositif fiscal lié aux dons vise à encourager la solidarité...
+        </p>
+
+        <!-- Zone dynamique -->
+        <div class="helloasso-wrapper" id="helloasso-container"></div>
+
+      </div>
     </div>
-    {% include 'footer.html.twig' %}
+  </div>
+
+  {% include 'footer.html.twig' %}
+
+  <!-- Script condition Chrome mobile -->
+  {# <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById("helloasso-container");
+      const ua = navigator.userAgent.toLowerCase();
+      const isChromeMobile = /chrome/.test(ua) && /mobile/.test(ua);
+
+      if (isChromeMobile) {
+        container.innerHTML = `
+          <a href="https://www.helloasso.com/associations/association-cultuelle-de-la-commune-d-ezanville/formulaires/2/widget"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-don">
+            Faire un don
+          </a>`;
+      } else {
+        container.innerHTML = `
+          <iframe
+            src="https://www.helloasso.com/associations/association-cultuelle-de-la-commune-d-ezanville/formulaires/2/widget"
+            class="helloasso-iframe"
+            allow="payment *; fullscreen; clipboard-read; clipboard-write"
+            allowfullscreen
+            scrolling="no"
+            frameborder="0">
+          </iframe>`;
+      }
+    });
+  </script> #}
 </body>
 
 </html>
