@@ -72,7 +72,9 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
       const container = document.getElementById("helloasso-container");
       const ua = navigator.userAgent.toLowerCase();
-      const isChromeMobile = /chrome/.test(ua) && /mobile/.test(ua);
+        const isMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
+        const isChromeMobile = (ua.includes('chrome') || ua.includes('crios')) && isMobile;
+
 
       if (isChromeMobile) {
         container.innerHTML = `
