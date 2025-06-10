@@ -10,3 +10,10 @@ fos_ck_editor:
             toolbar: full
             filebrowserUploadUrl: '/admin/upload-image'
             filebrowserUploadMethod: 'form'
+            # Pour simplifier l'upload d'image
+            filebrowserImageUploadUrl: '/admin/upload-image'
+            extraPlugins: "uploadimage"
+            # Supprimer les onglets avancés de la boîte de dialogue
+            removeDialogTabs: 'image:advanced;image:Link'
+            # Permettre l'upload par drag & drop
+            uploadUrl: '/admin/upload-image'

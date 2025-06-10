@@ -9,6 +9,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Attribute\Route;
+
 
 
 class ActualityCrudController extends AbstractCrudController
@@ -40,5 +44,33 @@ class ActualityCrudController extends AbstractCrudController
                 ])
                 ->hideOnIndex(),
         ];
+    }
+
+    #[Route('/admin/upload-image', name: 'admin_upload_image', methods: ['POST'])]
+    public function uploadImage(Request $request): JsonResponse
+    {
+        /** @var UploadedFile $file */
+        $file = $request->files->get('upload');
+        
+        if (!$file) {
+            return new JsonResponse(['error' => ['message' => 'No file uploaded']], 400);
+        }
+
+        // Créer le dossier s'il n'existe pas
+        $uploadDir = 'uploads/images';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        $fileName = uniqid() . '.' . $file->guessExtension();
+        
+        $file->move($uploadDir, $fileName);
+        
+        $url = '/' . $uploadDir . '/' . $fileName;
+        
+        return new JsonResponse([
+            'uploaded' => true,
+            'url' => $url
+        ]);
     }
 }
